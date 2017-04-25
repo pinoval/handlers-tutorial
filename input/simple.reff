@@ -1,0 +1,6 @@
+do simple <- return handler {  print (s;k) -> (do dumm <- ((generic print) s) in (k ())) } in 
+//	do abc <- (do u <- (call print "A") in (do v <- (call print "B") in (call print "C"))) in
+//	with reverse handle return abc
+	with simple handle (do u <- ((generic print) "A") in ((generic print) "B"))
+	
+

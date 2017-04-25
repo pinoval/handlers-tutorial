@@ -1,0 +1,7 @@
+do reverse <- return handler {  print (s;k) -> (do dummy <- (k ()) in ((generic print) s)) 
+							   } in 
+//	do abc <- (do u <- (call print "A") in (do v <- (call print "B") in (call print "C"))) in
+//	with reverse handle return abc
+	with reverse handle (do u <-((generic print) "A") in ((generic print) "B"))
+
+

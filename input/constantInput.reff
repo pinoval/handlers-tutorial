@@ -1,0 +1,14 @@
+do printFullName 
+			(do u <- ((generic print) "What is your forename") in 
+				 do forename <- ((generic print) ()) in
+				   do v <- (call print "What is your surname") in
+				     do surname <- (call read ()) in
+				       do f <- (join forename) in 
+				         do r <- (f surname) in
+				           (call print r)) in
+	do alwaysRead <- return (fun s ->  return handler { read (dummy; k) -> (k s)}) in
+		do h1 <- (alwaysRead "Bob") in 
+			(with h1 handle return printFullName)
+
+
+
