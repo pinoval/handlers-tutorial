@@ -8,11 +8,6 @@ import IO;
 alias Cmap = map[str, Computation];
 alias Hmap = map[str, Handler];
 
-Computation implode((Program) `<Declaration* decs> <Computation root>`) = implode(root);
-	
-//Declaration collectComputation((Declaration) `<Id x> = <Handler h>`) = handlerDec("<x>", implode(h + (x:implode(h))));
-//Declaration implode((Declaration) `<Id x> = <Computation c>`) = compDec("<x>", implode(c, cs + (x:implode(c)));
-
 Value implode((Value) `<Id x>`) = var("<x>");
 Value implode((Value) `true`) = \true();
 Value implode((Value) `false`) = \false();

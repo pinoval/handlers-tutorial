@@ -1,7 +1,5 @@
 module reff::AS
 
-data Program = program(list[Declaration] decls, Computation root);
-
 data Value 
 	= var(str x)
 	| \true()
@@ -16,12 +14,7 @@ data Value
 bool isNormal(var(_)) = false;
 bool isNormal(pair(v1, v2)) = isNormal(v1) && isNormal(v2);
 bool isNormal(Value v) = true;	
-	
-data Declaration 
-	= handlerDec(Handler h)
-	| compDec(Computation c)
-	;
-	
+		
 data OpClause
 	= op(str id, str x, str k, Computation c)
 	;	

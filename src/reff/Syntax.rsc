@@ -37,16 +37,7 @@ syntax Handler
 				   OperationClause* clauses "}" 
 	;
 	
-syntax Referenceable = Handler | Computation;
-	
-syntax Declaration
-	= Id valueName "=" Referenceable r;
-
-start syntax Program
-	= Declaration* decls Computation rootComp
-	;	
-	
-syntax Computation
+start syntax Computation
 	= returnComp: "return" Value v
 	| opCall: Id op "(" Value v ";" Id y "." Computation c")"
 	| seq: "do" Id x "\<-" Computation c1 "in" Computation c2
