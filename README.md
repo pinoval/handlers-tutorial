@@ -3,4 +3,4 @@ Rascal implementation of Matija Pretnar's tutorial on Algebraic Effects and Hand
 
 To run the **reverse** example from the tutorial, write the following in Rascal's REPL:
 
-`rascal> eval(implode(parse(#start[Program], |project://handlers-tutorial/input/reverse.reff|).top));`
+`rascal> eval(implode(parse(#start[Computation], |project://handlers-tutorial/input/reverse.reff|).top)); `
