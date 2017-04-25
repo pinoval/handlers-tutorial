@@ -69,18 +69,18 @@ Computation step(do(str x, Computation c1, Computation c2)) = do(x, c1_, c2)
 
 Computation step(with(handler(handler(clauses, \return(x, rc))), \return(v))) = subst(rc, x, v);
 
-Computation nativePrint(Value x, str k, Handler h, Computation c){
+Computation nativePrint(Value x, str k){
 	print("REFF\>\> ");
 	println(x);
-	return subst(app(var(k), unit()), k, fun(k, with(handler(h), c)));
+	return app(var(k), unit());
 }
 
-map[str, Computation(Value, str, Handler, Computation)] nativeMap = 
+map[str, Computation(Value, str)] nativeMap = 
 	("print":nativePrint);
 
 Computation step(with(h:handler(hh:handler([*_, op(id_i, x, k, nativeOp(id_j)),*_], rc)),opCall(id, v, y, c))) =
- {	cr = nativeMap[id](v, y, hh, c);
- 	return cr;
+ {	cr = nativeMap[id](v, y);
+ 	return subst(cr, y, fun(y, with(h, c)));
  }
 	when id_i == id,
 		 id_j == id;
